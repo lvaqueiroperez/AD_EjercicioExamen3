@@ -138,7 +138,7 @@ public class RepasoExamen3 {
             System.out.println("CAMPO INSERTADO !");
 
             //APARTADO B: AUMENTAR EL NUMERO DE ANALISIS REALIZADOS EN TABLA CLIENTES
-            //UPDATE DE LA TABLA CLIENTES: 
+            //UPDATE DE LA TABLA CLIENTES:  (asumimos que la clave primaria es el dni)
             PreparedStatement pst4 = conexion.prepareStatement("select numerodeanalisis from clientes where dni = ?");
 
             pst4.setString(1, obj.getDni());
@@ -147,10 +147,14 @@ public class RepasoExamen3 {
             rs4.next();
 
             numeroa = rs4.getInt("numerodeanalisis");
+            
+            System.out.println(numeroa);
 
             numeroa++;
+            
+            System.out.println(numeroa);
 
-            PreparedStatement pst5 = conexion.prepareStatement("update clientes set numerodeanalis = ? where dni = ?");
+            PreparedStatement pst5 = conexion.prepareStatement("update clientes set numerodeanalisis = ? where dni = ?");
 
             pst5.setInt(1, numeroa);
             pst5.setString(2, obj.getDni());
